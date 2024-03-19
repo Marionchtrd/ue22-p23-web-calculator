@@ -15,4 +15,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculatrice</title>
+  <style>
+    input[type="button"] {
+      width: 60px;
+      height: 60px;
+      font-size: 23px;
+      margin: 5px;
+    }
+  </style>
 </head>
