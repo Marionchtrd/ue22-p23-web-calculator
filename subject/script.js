@@ -51,9 +51,7 @@
 <!-- partial -->
   <script  src="./script.js"></script>
 
-</body>
 
-<head>
 <style>
   :root {
     font-family: Helvetica, Arial, sans-serif;
@@ -270,5 +268,5 @@
     }
     
 </jscript>
-</head>
+</body>
 </html>
