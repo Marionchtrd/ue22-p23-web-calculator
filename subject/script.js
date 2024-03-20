@@ -14,7 +14,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculatrice</title>
+  <title>Calculator starter</title>
   <style>
     input[type="button"] {
       width: 60px;
@@ -51,3 +51,73 @@
     <input type="button" value="=" onclick="calculate()">
     <input type="button" value="+" onclick="appendToDisplay('+')">
   </div>
+  </body>
+  <jscript>
+  const calculator = {
+      displayValue: '0',
+      firstOperand: null,
+      waitingForSecondOperand: false,
+      operator: null,
+    };
+
+    function updateDisplay() {
+      const display = document.querySelector('.calculator__display');
+      display.textContent = calculator.displayValue;
+    }
+
+    updateDisplay();
+
+    const keys = document.querySelector('.calculator__keys');
+    keys.addEventListener('click', (event) => {
+      const { target } = event;
+      if (!target.matches('button')) {
+        return;
+      }
+
+      if (target.classList.contains('key--operator')) {
+        handleOperator(target.textContent);
+        updateDisplay();
+        return;
+      }
+
+      if (target.dataset.action === 'clear') {
+        resetCalculator();
+        updateDisplay();
+        return;
+      }
+
+      if (target.dataset.action === 'decimal') {
+        inputDecimal(target.textContent);
+        updateDisplay();
+        return;
+      }
+
+      if (target.dataset.action === 'calculate') {
+        performCalculation();
+        updateDisplay();
+        return;
+      }
+
+      inputDigit(target.textContent);
+      updateDisplay();
+    });
+
+    function inputDigit(digit) {
+      const { displayValue, waitingForSecondOperand } = calculator;
+
+      if (waitingForSecondOperand === true) {
+        calculator.displayValue = digit;
+        calculator.waitingForSecondOperand = false;
+      } else {
+        calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+      }
+    }
+
+    function inputDecimal(dot) {
+      if (!calculator.displayValue.includes(dot)) {
+        calculator.displayValue += dot;
+      }
+    }
+
+    
+</jscript>
